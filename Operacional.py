@@ -1,3 +1,6 @@
+# Aluno Rodrigo Costa dos santos
+
+
 # Função para cadastrar a produção de cada turno (manhã, tarde, noite) por 7 dias da semana
 def cadastrar_producao():
     print("\nCadastro da produção diária (manhã, tarde, noite):\n")

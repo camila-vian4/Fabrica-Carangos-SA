@@ -1,4 +1,5 @@
 import operacional
+import estoque as estoque_modulo
 import financeiro
 import recursos_humanos
 
@@ -18,6 +19,7 @@ def voltarMenu():
 
 producao_semana = None
 agua = luz = salarios = impostos = None
+estoque = estoque_modulo.Estoque()
 
 print("\n\n")
 print("--- Fábrica Carangos S/A 🚗✨")
@@ -104,6 +106,74 @@ while True:
                         resposta = voltarMenu()
                         if resposta == "voltar":
                             break
+        case "2":
+            while True:
+                # Módulo de Estoque
+                print("\n\n--- MÓDULO DE ESTOQUE | 📦✨")
+                print("\n1. Cadastrar Carro 🚗")
+                print("2. Vender Carro 🏷️")
+                print("3. Mostrar Estoque 📋")
+                print("4. Calcular Custos 💰")
+                print("5. Buscar Carro 🔍")
+                print("6. Sair ❌")
+                opcao_estoque = input("\n➡️  Escolha uma opção: ")
+                if opcao_estoque == "6":
+                    print("\nAgradecemos por utilizar nosso sistema! Até logo! 👋")
+                    exit()
+                elif opcao_estoque not in ["1", "2", "3", "4", "5", "6"]:
+                    print("\nOpção inválida. Tente novamente. ❌")
+
+                # Chamando as opções do módulo de estoque
+                match opcao_estoque:
+                    case "1":
+                        print("\n\n--- CADASTRO DE CARRO | 🚗\n")
+                        codigo = input("Código: ")
+                        nome = input("Nome: ")
+                        data_fabricacao = input("Data de fabricação: ")
+                        fornecedor = input("Fornecedor: ")
+                        cor = input("Cor: ")
+
+                        try:
+                            quantidade = int(input("Quantidade: "))
+                            valor_compra = float(input("Valor de compra: "))
+                        except ValueError:
+                            print("Valores inválidos! ❌")
+                            break
+
+                        novo_carro = estoque_modulo.Carro(codigo, nome, data_fabricacao, fornecedor, quantidade, valor_compra, cor)
+                        estoque.adicionar_carro(novo_carro)
+                        resposta = voltarMenu()
+                        if resposta == "voltar":
+                            break
+
+                    case "2":
+                        print("\n\n--- VENDA DE CARRO | 🏷️\n")
+                        estoque.venda_veiculo()
+                        resposta = voltarMenu()
+                        if resposta == "voltar":
+                            break
+
+                    case "3":
+                        print("\n\n--- MOSTRAR ESTOQUE | 📋\n")
+                        estoque.mostrar_estoque()
+                        resposta = voltarMenu()
+                        if resposta == "voltar":
+                            break
+
+                    case "4":
+                        print("\n\n--- CÁLCULO DE CUSTOS | 💰")
+                        estoque.calcular_custos()
+                        resposta = voltarMenu()
+                        if resposta == "voltar":
+                            break
+
+                    case "5":
+                        print("\n\n--- BUSCAR CARRO | 🔍\n")
+                        estoque.buscar_carro()
+                        resposta = voltarMenu()
+                        if resposta == "voltar":
+                            break
+
         case "3":
             while True:
             # Módulo Financeiro

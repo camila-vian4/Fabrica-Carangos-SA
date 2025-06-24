@@ -1,5 +1,6 @@
 import operacional
 import financeiro
+import recursos_humanos
 
 def voltarMenu():
     while True:
@@ -83,7 +84,7 @@ while True:
                             break
 
                     case "3":
-                        print("\n\n--- Projeção de Produção | 📅")
+                        print("\n\n--- PROJEÇÃO DE SIMULAÇÃO | 📅")
                         if producao_semana is None:
                             print("\nNenhum cadastro encontrado! Cadastre antes de emitir o relatório. ⚠️")
                         else:
@@ -174,3 +175,41 @@ while True:
                             resposta = voltarMenu()
                             if resposta == "voltar":
                                 break
+        case "4":
+            while True:
+                # Módulo Recursos Humanos
+                print("\n\n--- MÓDULO RECURSOS HUMANOS | 👥✨")
+                print("\n1. Cadastrar Funcionário 📝")
+                print("2. Calcular Salário 💰")
+                print("3. Gerar Relatório Final 📊")
+                print("4. Sair ❌")
+                opcao_rh = input("\n➡️  Escolha uma opção: ")
+                if opcao_rh == "4":
+                    print("\nAgradecemos por utilizar nosso sistema! Até logo! 👋")
+                    exit()
+                elif opcao_rh not in ["1", "2", "3", "4"]:
+                    print("\nOpção inválida. Tente novamente. ❌")
+
+                # Chamando as opções do módulo de recursos humanos
+                match opcao_rh:
+                    case "1":
+                        print("\n\n--- CADASTRO DE FUNCIONÁRIO | 📝\n")
+                        recursos_humanos.cadastrar_funcionario()
+                        resposta = voltarMenu()
+                        if resposta == "voltar":
+                            break
+
+                    case "2":
+                        print("\n\n--- CÁLCULO DE SALÁRIO | 💰\n")
+                        recursos_humanos.calcular_salario()
+                        resposta = voltarMenu()
+                        if resposta == "voltar":
+                            break
+
+                    case "3":
+                        print("\n\n--- RELATÓRIO FINAL | 📊\n")
+                        recursos_humanos.gerar_relatorio()
+                        resposta = voltarMenu()
+                        if resposta == "voltar":
+                            break
+                      
